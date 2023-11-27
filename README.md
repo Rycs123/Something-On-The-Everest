@@ -1,4 +1,4 @@
-# KSomething-On-The-Everest.github.io
+# Something-On-The-Everest.github.io
 
 **Pastikan Anda sudah diundang terlebih dahulu**
 
