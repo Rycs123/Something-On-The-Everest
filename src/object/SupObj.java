@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 import main.GamePanel;;
 
 public class SupObj{
-    public BufferedImage image;
+    public BufferedImage image, image2, image3;
     public String name;
     public boolean collision = false;
     public int worldX, worldY;

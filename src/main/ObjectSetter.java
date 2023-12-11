@@ -27,7 +27,7 @@ public class ObjectSetter {
 
     public void setNpc(){
         gp.npc[0] = new Npc_Oldman(gp);
-        gp.npc[0].worldX = 23 * gp.tileSize;
+        gp.npc[0].worldX = 29 * gp.tileSize;
         gp.npc[0].worldY = 23 * gp.tileSize;
 
     }

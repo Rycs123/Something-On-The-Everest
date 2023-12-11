@@ -37,7 +37,9 @@ public class GamePanel extends JPanel implements Runnable{
 	public CollisionChecker collCheck = new CollisionChecker(this);
 	public ObjectSetter objSetter = new ObjectSetter(this);
 	public UI ui = new UI(this);
+	public EventHandler eventHandler = new EventHandler(this);
 	Thread gameThread;
+
 	public Player player = new Player(this, keyH);
 	public SupObj obj[] = new SupObj[10];
 	public Character npc[] = new Character[10];

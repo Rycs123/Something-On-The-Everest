@@ -18,6 +18,9 @@ public class Character {
 	public boolean collisionOn = false;
 	public int actionLockCounter = 0;
 
+	// life
+	public int maxLife;
+	public int life;
 
 	public Character(GamePanel gp){
 		this.gp = gp;
@@ -30,6 +33,9 @@ public class Character {
 		setAction();
 		collisionOn = false;
 		gp.collCheck.checkTile(this);
+		gp.collCheck.checkObject(this, false);
+		// gp.collCheck.checkPlayer(this);
+
 		if(collisionOn == false) {
 			switch(direction) {
 				case "up":

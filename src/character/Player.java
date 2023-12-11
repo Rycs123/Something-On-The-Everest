@@ -44,6 +44,8 @@ public class Player extends Character{
 		worldY = gp.tileSize * 21;
 		speed = 4;
 		direction = "up";
+		maxLife = 8;
+		life = maxLife;
 	}
 	
 	public void getPlayerImage() {
@@ -82,7 +84,12 @@ public class Player extends Character{
 				gp.collCheck.checkTile(this);
 				
 				int objIndex = gp.collCheck.checkObject(this, true);
-				pickUpObj(objIndex);	
+				pickUpObj(objIndex);
+				
+				int npcIndex = gp.collCheck.checkCharacter(this, gp.npc);
+				interactNpc(npcIndex);
+
+				gp.eventHandler.checkEvent();
 			}
 
 		}
@@ -143,6 +150,12 @@ public class Player extends Character{
 					System.out.println("Key: "+hasKey);
 					break;
 			}
+		}
+	}
+
+	public void interactNpc(int i){
+		if(i != 999){
+			System.out.println("Player hit NPC");
 		}
 	}
 

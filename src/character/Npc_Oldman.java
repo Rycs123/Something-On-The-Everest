@@ -11,7 +11,7 @@ public class Npc_Oldman extends Character {
 
     public Npc_Oldman(GamePanel gp) {
         super(gp);
-        direction = "down";
+        direction = "right";
         speed = 1;
         getImage();
     }
@@ -50,10 +50,5 @@ public class Npc_Oldman extends Character {
             }
             actionLockCounter = 0;
         }
-
-        
     }
-
-
-    
 }
