@@ -103,29 +103,32 @@ public class GamePanel extends JPanel implements Runnable {
 
 		Graphics2D g2 = (Graphics2D) g;
 
-		if (gameState == titleState) {
-			ui.draw(g2);
-		} else {
-			tileM.draw(g2);
+		g2.setColor(Color.white);
+		g2.fillRect(100, 100, tileSize, tileSize);
+		g2.dispose();
+		// if (gameState == titleState) {
+		// ui.draw(g2);
+		// } else {
+		// tileM.draw(g2);
 
-			for (int i = 0; i < obj.length; i++) {
-				if (obj[i] != null) {
-					obj[i].draw(g2, this);
-				}
-			}
+		// for (int i = 0; i < obj.length; i++) {
+		// if (obj[i] != null) {
+		// obj[i].draw(g2, this);
+		// }
+		// }
 
-			for (int i = 0; i < npc.length; i++) {
-				if (npc[i] != null) {
-					npc[i].draw(g2);
-				}
-			}
+		// for (int i = 0; i < npc.length; i++) {
+		// if (npc[i] != null) {
+		// npc[i].draw(g2);
+		// }
+		// }
 
-			player.draw(g2);
+		// player.draw(g2);
 
-			ui.draw(g2);
-			g2.dispose();
+		// ui.draw(g2);
+		// g2.dispose();
 
-		}
+		// }
 
 	}
 
