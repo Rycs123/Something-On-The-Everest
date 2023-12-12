@@ -42,6 +42,12 @@ public class GamePanel extends JPanel implements Runnable {
 	public SupObj obj[] = new SupObj[10];
 	public Character npc[] = new Character[10];
 
+	public int gameState;
+	public final int titleState = 0;
+	public final int playState = 1;
+	public final int pauseState = 2;
+	public final int dialogueState = 3;
+
 	public GamePanel() {
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
 		this.setBackground(Color.black);
@@ -53,6 +59,8 @@ public class GamePanel extends JPanel implements Runnable {
 	public void setupObject() {
 		objSetter.setObject();
 		objSetter.setNpc();
+		// playMusic(0);
+		gameState = titleState;
 	}
 
 	public void startGameThread() {
@@ -86,7 +94,6 @@ public class GamePanel extends JPanel implements Runnable {
 		for (int i = 0; i < npc.length; i++) {
 			if (npc[i] != null) {
 				npc[i].update();
-				;
 			}
 		}
 	}
@@ -96,25 +103,29 @@ public class GamePanel extends JPanel implements Runnable {
 
 		Graphics2D g2 = (Graphics2D) g;
 
-		tileM.draw(g2);
+		if (gameState == titleState) {
+			ui.draw(g2);
+		} else {
+			tileM.draw(g2);
 
-		for (int i = 0; i < obj.length; i++) {
-			if (obj[i] != null) {
-				obj[i].draw(g2, this);
+			for (int i = 0; i < obj.length; i++) {
+				if (obj[i] != null) {
+					obj[i].draw(g2, this);
+				}
 			}
-		}
 
-		for (int i = 0; i < npc.length; i++) {
-			if (npc[i] != null) {
-				npc[i].draw(g2);
+			for (int i = 0; i < npc.length; i++) {
+				if (npc[i] != null) {
+					npc[i].draw(g2);
+				}
 			}
+
+			player.draw(g2);
+
+			ui.draw(g2);
+			g2.dispose();
+
 		}
-
-		player.draw(g2);
-
-		ui.draw(g2);
-
-		g2.dispose();
 
 	}
 
