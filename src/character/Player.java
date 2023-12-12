@@ -44,6 +44,9 @@ public class Player extends Character {
 		worldY = gp.tileSize * 21;
 		speed = 4;
 		direction = "up";
+
+		maxHP = 6;
+		hp = maxHP;
 	}
 
 	public void getPlayerImage() {

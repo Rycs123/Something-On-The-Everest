@@ -5,18 +5,24 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+import object.ObjHeart;
 import object.ObjKey;
 
 public class UI {
     GamePanel gp;
     Font arial_40;
-    BufferedImage keyImage;
+    BufferedImage keyImage, heartFullImage, heartHalfImage, heartBlankImage;
 
     public UI(GamePanel gp) {
         this.gp = gp;
         arial_40 = new Font("Monospaced", Font.BOLD, 30);
-        ObjKey key = new ObjKey();
+        ObjKey key = new ObjKey(gp);
         keyImage = key.image;
+
+        ObjHeart heart = new ObjHeart(gp);
+        heartFullImage = heart.image;
+        heartHalfImage = heart.image2;
+        heartBlankImage = heart.image3;
     }
 
     public void draw(Graphics2D g2) {

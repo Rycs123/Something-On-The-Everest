@@ -17,6 +17,11 @@ public class Character {
 	public int solidAreaDefaultX, solidAreaDefaultY;
 	public boolean collisionOn = false;
 	public int actionLockCounter = 0;
+	String dialogues[] = new String[20];
+	int dialogueIndex = 0;
+
+	public int maxHP;
+	public int hp;
 
 	public Character(GamePanel gp) {
 		this.gp = gp;
