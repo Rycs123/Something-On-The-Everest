@@ -17,9 +17,9 @@ public class ObjHeart extends SupObj {
             image = ImageIO.read(getClass().getResourceAsStream("/objects/heart_full.png"));
             image2 = ImageIO.read(getClass().getResourceAsStream("/objects/heart_half.png"));
             image3 = ImageIO.read(getClass().getResourceAsStream("/objects/heart_blank.png"));
-            // uTool.scale(image, gp.tileSize, gp.tileSize);
-            // uTool.scale(image, gp.tileSize, gp.tileSize);
-            // uTool.scale(image, gp.tileSize, gp.tileSize);
+            // image = uTool.scale(image, gp.tileSize, gp.tileSize);
+            // image2 = uTool.scale(image, gp.tileSize, gp.tileSize);
+            // image3 = uTool.scale(image, gp.tileSize, gp.tileSize);
 
         } catch (IOException e) {
             e.printStackTrace();

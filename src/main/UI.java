@@ -36,19 +36,47 @@ public class UI {
         g2.drawImage(keyImage, gp.tileSize / 4, gp.tileSize / 4, gp.tileSize, gp.tileSize, null);
         g2.drawString("x" + gp.player.hasKey, 50, 58);
         if (gp.gameState == gp.titleState) {
-            drawTitleScreen();
+            drawTitleScreen(g2);
         }
 
         if (gp.gameState == gp.playState) {
-
+            drawPlayerLife();
         }
 
         if (gp.gameState == gp.pauseState) {
-            drawPauseScreen();
+            drawPlayerLife();
+            drawPauseScreen(g2);
         }
 
         if (gp.gameState == gp.dialogueState) {
+            drawPlayerLife();
             drawDialogueScreen();
+        }
+    }
+
+    public void drawPlayerLife() {
+        int x = gp.tileSize / 2;
+        int y = gp.tileSize / 2;
+        int i = 0;
+
+        while (i < gp.player.maxHP / 2) {
+            g2.drawImage(heartBlankImage, x, y, null);
+            i++;
+            x += gp.tileSize;
+        }
+
+        x = gp.tileSize / 2;
+        y = gp.tileSize / 2;
+        i = 0;
+
+        while (i < gp.player.hp) {
+            g2.drawImage(heartHalfImage, x, y, null);
+            i++;
+            if (i < gp.player.hp) {
+                g2.drawImage(heartFullImage, x, y, null);
+            }
+            i++;
+            x += gp.tileSize;
         }
     }
 
@@ -57,6 +85,10 @@ public class UI {
         String text = "PAUSED";
         int x = getXForCenteredText(text);
         int y = gp.screenHeight / 2;
+    }
+
+    public void drawDialogueScreen() {
+
     }
 
     public void drawTitleScreen(Graphics2D g2) {
