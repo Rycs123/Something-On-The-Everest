@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 
 import main.GamePanel;;
 
-public class SupObj {
+public class SupObj{
     public BufferedImage image, image2, image3;
     public String name;
     public boolean collision = false;
@@ -15,10 +15,10 @@ public class SupObj {
     public int solidAreaDefaultX = 0;
     public int solidAreaDefaultY = 0;
 
-    public void draw(Graphics2D g2, GamePanel gp) {
+    public void draw(Graphics2D g2, GamePanel gp){
         int screenX = worldX - gp.player.worldX + gp.player.screenX;
-        int screenY = worldY - gp.player.worldY + gp.player.screenY;
+		int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
-        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+		g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
     }
 }

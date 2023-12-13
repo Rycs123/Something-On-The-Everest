@@ -17,25 +17,27 @@ public class Character {
 	public int solidAreaDefaultX, solidAreaDefaultY;
 	public boolean collisionOn = false;
 	public int actionLockCounter = 0;
-	String dialogues[] = new String[20];
-	int dialogueIndex = 0;
 
-	public int maxHP;
-	public int hp;
+	// life
+	public int maxLife;
+	public int life;
 
-	public Character(GamePanel gp) {
+	public Character(GamePanel gp){
 		this.gp = gp;
 	}
 
-	public void setAction() {
-	}
+	
+	public void setAction(){}
 
-	public void update() {
+	public void update(){
 		setAction();
 		collisionOn = false;
 		gp.collCheck.checkTile(this);
-		if (collisionOn == false) {
-			switch (direction) {
+		gp.collCheck.checkObject(this, false);
+		// gp.collCheck.checkPlayer(this);
+
+		if(collisionOn == false) {
+			switch(direction) {
 				case "up":
 					worldY -= speed;
 					break;
@@ -43,64 +45,60 @@ public class Character {
 					worldY += speed;
 					break;
 				case "left":
-					worldX -= speed;
+					worldX -= speed;				
 					break;
 				case "right":
 					worldX += speed;
 					break;
 			}
 		}
-
+				
 		frameCounter++;
-		if (frameCounter > 15) {
-			if (frameNum == 1) {
+		if(frameCounter > 15) {
+			if(frameNum == 1) {
 				frameNum = 2;
-			} else if (frameNum == 2) {
+			}else if(frameNum == 2) {
 				frameNum = 1;
 			}
-			frameCounter = 0;
+				frameCounter = 0;
 		}
 	}
 
-	public void draw(Graphics2D g2) {
+	public void draw(Graphics2D g2){
 		BufferedImage image = null;
 
 		int screenX = worldX - gp.player.worldX + gp.player.screenX;
 		int screenY = worldY - gp.player.worldY + gp.player.screenY;
 		switch (direction) {
 			case "up":
-				if (frameNum == 1) {
+				if(frameNum == 1) {
 					image = up1;
-				}
-				if (frameNum == 2) {
+				}if(frameNum == 2) {
 					image = up2;
 				}
 				break;
-			case "down":
-				if (frameNum == 1) {
+			case "down": 
+				if(frameNum == 1) {
 					image = down1;
-				}
-				if (frameNum == 2) {
+				}if(frameNum == 2) {
 					image = down2;
 				}
 				break;
-			case "left":
-				if (frameNum == 1) {
+			case "left": 
+				if(frameNum == 1) {
 					image = left1;
-				}
-				if (frameNum == 2) {
+				}if(frameNum == 2) {
 					image = left2;
 				}
 				break;
 			case "right":
-				if (frameNum == 1) {
+				if(frameNum == 1) {
 					image = right1;
-				}
-				if (frameNum == 2) {
+				}if(frameNum == 2) {
 					image = right2;
 				}
 				break;
-		}
+			}
 		g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
 	}
 }
