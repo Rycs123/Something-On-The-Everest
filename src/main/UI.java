@@ -31,7 +31,7 @@ public class UI {
 
     public void draw(Graphics2D g2){
         g2.setFont(arial_40);
-        g2.setColor(Color.WHITE);
+        g2.setColor(Color.BLACK);
         g2.drawImage(keyImage, gp.tileSize/4, gp.tileSize/4, gp.tileSize, gp.tileSize, null);
         g2.drawString("x" + gp.player.hasKey, 50, 58);
         

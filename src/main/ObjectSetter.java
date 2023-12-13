@@ -17,7 +17,7 @@ public class ObjectSetter {
         gp.obj[0].worldY = 22 * gp.tileSize;
 
         gp.obj[1] = new ObjKey();
-        gp.obj[1].worldX = 15 * gp.tileSize;
+        gp.obj[1].worldX = 18 * gp.tileSize;
         gp.obj[1].worldY = 20 * gp.tileSize;
 
         gp.obj[2] = new ObjDoor();

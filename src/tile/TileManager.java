@@ -48,7 +48,7 @@ public class TileManager {
 			tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/snow.png"));
 
 			tile[6] = new Tile();
-			tile[6].image = ImageIO.read(getClass().getResourceAsStream("/tiles/earth.png"));
+			tile[6].image = ImageIO.read(getClass().getResourceAsStream("/tiles/glacier.png"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();
