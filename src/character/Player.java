@@ -45,7 +45,7 @@ public class Player extends Character {
 		worldY = gp.tileSize * 21;
 		speed = 4;
 		direction = "up";
-		maxLife = 8;
+		maxLife = 6;
 		life = maxLife;
 	}
 
@@ -176,7 +176,7 @@ public class Player extends Character {
 
 	public void interactNpc(int i) {
 		if (i != 999) {
-			System.out.println("Player hit NPC");
+			gp.gameState = gp.dialogueState;
 		}
 	}
 
