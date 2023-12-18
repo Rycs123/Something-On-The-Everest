@@ -23,12 +23,17 @@ public class Character {
 	public int life;
 	public int type; // 0 player, 1 npc, 2 monster
 	public String name;
+	public String dialogues;
+	public int dialogueIndex = 0;
 
 	public Character(GamePanel gp) {
 		this.gp = gp;
 	}
 
 	public void setAction() {
+	}
+
+	public void speak() {
 	}
 
 	public void update() {

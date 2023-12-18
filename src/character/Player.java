@@ -139,6 +139,7 @@ public class Player extends Character {
 		// this needs to be outside of key if statement
 		if (invincible == true) {
 			invincibleCounter++;
+			collisionOn = false;
 			if (invincibleCounter > 60) {
 				invincible = false;
 				invincibleCounter = 0;
@@ -176,7 +177,8 @@ public class Player extends Character {
 
 	public void interactNpc(int i) {
 		if (i != 999) {
-			System.out.println("Player hit NPC");
+			gp.gameState = gp.dialogue;
+			gp.npc[i].speak();
 		}
 	}
 
@@ -228,6 +230,7 @@ public class Player extends Character {
 		}
 		if (invincible == true) {
 			g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
+
 		}
 		g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
 

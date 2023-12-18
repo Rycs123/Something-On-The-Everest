@@ -34,7 +34,7 @@ public class GamePanel extends JPanel implements Runnable {
 	int FPS = 60;
 
 	TileManager tileM = new TileManager(this);
-	KeyHandler keyH = new KeyHandler();
+	public KeyHandler keyH = new KeyHandler(this);
 	public CollisionChecker collCheck = new CollisionChecker(this);
 	public ObjectSetter objSetter = new ObjectSetter(this);
 	public UI ui = new UI(this);
@@ -49,6 +49,11 @@ public class GamePanel extends JPanel implements Runnable {
 	public Character npc[] = new Character[10];
 	public Character monster[] = new Character[20];
 
+	public int gameState;
+	public final int play_state = 1;
+	public final int pause_state = 2;
+	public final int dialogue = 3;
+
 	public GamePanel() {
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
 		this.setBackground(Color.black);
@@ -60,11 +65,12 @@ public class GamePanel extends JPanel implements Runnable {
 	// public void setUpGame() {
 	// }
 
-	public void setupObject() {
+	public void setupGame() {
 		objSetter.setObject();
 		objSetter.setNpc();
 		objSetter.setMonster();
 		playMusic(0);
+		gameState = play_state;
 	}
 
 	public void startGameThread() {
@@ -94,20 +100,28 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
 	public void update() {
-		player.update();
-		for (int i = 0; i < npc.length; i++) {
-			if (npc[i] != null) {
-				npc[i].update();
-				;
+		
+		if(gameState == play_state){
+			player.update();
+
+			for (int i = 0; i < npc.length; i++) {
+				if (npc[i] != null) {
+					npc[i].update();
+					;
+				}
 			}
+
+			// monster
+			for (int i = 0; i < monster.length; i++) {
+				if (monster[i] != null) {
+					monster[i].update();
+				}
+			}
+		}
+		if(gameState == pause_state){
+			// ui.drawPauseScreen();
 		}
 
-		// monster
-		for (int i = 0; i < monster.length; i++) {
-			if (monster[i] != null) {
-				monster[i].update();
-			}
-		}
 	}
 
 	public void paintComponent(Graphics g) {
