@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 public class Monster_GreenSlime extends Character {
     public Monster_GreenSlime(GamePanel gp) {
         super(gp);
-
+        type = 2;
         name = "Green Slime";
         speed = 1;
         maxLife = 4;

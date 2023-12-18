@@ -1,5 +1,6 @@
 package character;
 
+import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -91,6 +92,8 @@ public class Player extends Character {
 				interactNpc(npcIndex);
 
 				int monsterIndex = gp.collCheck.checkCharacter(this, gp.monster);
+				contactMonster(monsterIndex);
+
 				gp.eventHandler.checkEvent();
 			}
 
@@ -132,6 +135,16 @@ public class Player extends Character {
 				pixelCounter = 0;
 			}
 		}
+
+		// this needs to be outside of key if statement
+		if (invincible == true) {
+			invincibleCounter++;
+			if (invincibleCounter > 60) {
+				invincible = false;
+				invincibleCounter = 0;
+			}
+
+		}
 	}
 
 	public void pickUpObj(int index) {
@@ -164,6 +177,16 @@ public class Player extends Character {
 	public void interactNpc(int i) {
 		if (i != 999) {
 			System.out.println("Player hit NPC");
+		}
+	}
+
+	public void contactMonster(int number) {
+		if (number != 999) {
+			if (invincible == false) {
+				life -= 1;
+				invincible = true;
+			}
+
 		}
 	}
 
@@ -203,7 +226,17 @@ public class Player extends Character {
 				}
 				break;
 		}
-
+		if (invincible == true) {
+			g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
+		}
 		g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+
+		// reset
+		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+
+		// debug
+		// g2.setFont(new Font("Arial", Font.PLAIN, 26));
+		// g2.setColor(Color.white);
+		// g2.drawString("Invincible:" + invincibleCounter, 10, 400);
 	}
 }
