@@ -1,6 +1,7 @@
 package main;
 
 import character.Npc_Oldman;
+import monster.Monster_GreenSlime;
 import object.ObjDoor;
 import object.ObjKey;
 
@@ -30,5 +31,15 @@ public class ObjectSetter {
         gp.npc[0].worldX = 29 * gp.tileSize;
         gp.npc[0].worldY = 23 * gp.tileSize;
 
+    }
+
+    public void setMonster() {
+        gp.monster[0] = new Monster_GreenSlime(gp);
+        gp.monster[0].worldX = gp.tileSize * 23;
+        gp.monster[0].worldY = gp.tileSize * 23;
+
+        gp.monster[1] = new Monster_GreenSlime(gp);
+        gp.monster[1].worldX = gp.tileSize * 23;
+        gp.monster[1].worldY = gp.tileSize * 37;
     }
 }

@@ -14,7 +14,7 @@ public class Monster_GreenSlime extends Character {
         speed = 1;
         maxLife = 4;
         life = maxLife;
-
+        direction = "left";
         solidArea.x = 3;
         solidArea.y = 18;
         solidArea.width = 42;
@@ -27,14 +27,14 @@ public class Monster_GreenSlime extends Character {
 
     public void getImage() {
         try {
-            up1 = ImageIO.read(getClass().getResourceAsStream("/monster/greenslime_down_1"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/monster/greenslime_down_2"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/monster/greenslime_down_1"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/monster/greenslime_down_2"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/monster/greenslime_down_1"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/monster/greenslime_down_2"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/monster/greenslime_down_1"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/monster/greenslime_down_2"));
+            up1 = ImageIO.read(getClass().getResourceAsStream("/monster/orc_up_1.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/monster/orc_up_2.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("/monster/orc_down_1.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/monster/orc_down_2.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("/monster/orc_left_1.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/monster/orc_left_2.png"));
+            right1 = ImageIO.read(getClass().getResourceAsStream("/monster/orc_right_1.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/monster/orc_right_2.png"));
 
         } catch (IOException e) {
             e.printStackTrace();

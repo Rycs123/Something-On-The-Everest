@@ -22,6 +22,7 @@ public class Character {
 	public int maxLife;
 	public int life;
 	public int type; // 0 player, 1 npc, 2 monster
+	public String name;
 
 	public Character(GamePanel gp) {
 		this.gp = gp;

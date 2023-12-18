@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 
 import character.Character;
 import character.Player;
-import monster.Monster_GreenSlime;
 import object.SupObj;
 import tile.TileManager;
 
@@ -58,13 +57,13 @@ public class GamePanel extends JPanel implements Runnable {
 		this.setFocusable(true);
 	}
 
-	public void setUpGame() {
-		aSetter.setMonster();
-	}
+	// public void setUpGame() {
+	// }
 
 	public void setupObject() {
 		objSetter.setObject();
 		objSetter.setNpc();
+		objSetter.setMonster();
 		playMusic(0);
 	}
 
@@ -106,7 +105,7 @@ public class GamePanel extends JPanel implements Runnable {
 		// monster
 		for (int i = 0; i < monster.length; i++) {
 			if (monster[i] != null) {
-				monster.update();
+				monster[i].update();
 			}
 		}
 	}
