@@ -20,36 +20,33 @@ public class TileManager {
 		tile = new Tile[10];
 		mapTileNum = new int [gp.maxWorldCol][gp.maxWorldRow];
 		getTileImage();
-		loadMap("/maps/world01.txt");
+		loadMap("/maps/world02.txt");
 	}
 	
 	public void getTileImage() {
 		System.out.println("Image loading started");
 		try {
 			tile[0] = new Tile();
-			tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass.png"));
-			
+			tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/cobble.png"));
+			tile[0].collision = true;
+
 			tile[1] = new Tile();
-			tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/cobble.png"));
-			tile[1].collision = true;
+			tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/glacier.png"));
 			
 			tile[2] = new Tile();
 			tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/snow.png"));
-			tile[2].collision = true;
 			
 			tile[3] = new Tile();
-			tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/snow.png"));
-			
+			tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/snowyTree.png"));
+			tile[3].collision = true;
+
 			tile[4] = new Tile();
-			tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/tree.png"));
+			tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Wglacier_up.png"));
 			tile[4].collision = true;
 
 			tile[5] = new Tile();
-			tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/snow.png"));
+			tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Yglacier_down.png"));
 
-			tile[6] = new Tile();
-			tile[6].image = ImageIO.read(getClass().getResourceAsStream("/tiles/glacier.png"));
-			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -41,8 +41,8 @@ public class Player extends Character {
 
 	public void setDefaultValue() {
 		// starting position
-		worldX = gp.tileSize * 23;
-		worldY = gp.tileSize * 21;
+		worldX = gp.tileSize * 8;
+		worldY = gp.tileSize * 43;
 		speed = 4;
 		direction = "up";
 		maxLife = 8;

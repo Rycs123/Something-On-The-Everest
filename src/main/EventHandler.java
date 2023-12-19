@@ -16,7 +16,16 @@ public class EventHandler {
     }
 
     public void checkEvent(){
-        if(hit(23, 26, "any")==true){
+        if(hit(10, 11, "any")==true){
+            gp.player.life--;
+        }
+        if(hit(10, 19, "any")==true){
+            gp.player.life--;
+        }
+        if(hit(25, 20, "any")==true){
+            gp.player.life--;
+        }
+        if(hit(31, 14, "any")==true){
             gp.player.life--;
         }
     }
