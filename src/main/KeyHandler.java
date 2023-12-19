@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
 	GamePanel gp;
-	public boolean upPressed, downPressed, leftPressed, rightPressed;
+	public boolean enterPressed, upPressed, downPressed, leftPressed, rightPressed;
 
 	public KeyHandler(GamePanel gp) {
 		this.gp = gp;
@@ -59,9 +59,12 @@ public class KeyHandler implements KeyListener {
 			if (code == KeyEvent.VK_SPACE) {
 				gp.gameState = gp.pause_state;
 			}
+			if (code == KeyEvent.VK_ESCAPE) {
+				gp.gameState = gp.pause_state;
+			}
 		} else if (gp.gameState == gp.pause_state) {
 			if (code == KeyEvent.VK_SPACE) {
-				gp.gameState = gp.play_state;
+				gp.gameState = gp.optionState;
 			}
 		} else if (gp.gameState == gp.dialogue) {
 			if (code == KeyEvent.VK_SPACE) {
@@ -69,6 +72,38 @@ public class KeyHandler implements KeyListener {
 			}
 		}
 
+		if (gp.gameState == gp.optionState) {
+			if (code == KeyEvent.VK_ESCAPE) {
+				gp.gameState = gp.play_state;
+			}
+			if (code == KeyEvent.VK_ENTER) {
+				enterPressed = true;
+			}
+		}
+		if (gp.gameState == gp.gameOverState) {
+			if (code == KeyEvent.VK_W) {
+				gp.ui.selectOptionMenu--;
+				if (gp.ui.selectOptionMenu < 0) {
+					gp.ui.selectOptionMenu = 1;
+				}
+			}
+			if (code == KeyEvent.VK_S) {
+				gp.ui.selectOptionMenu++;
+				if (gp.ui.selectOptionMenu > 1) {
+					gp.ui.selectOptionMenu = 0;
+				}
+			}
+			if (code == KeyEvent.VK_ENTER) {
+				if (gp.ui.selectOptionMenu == 0) {
+					gp.gameState = gp.play_state;
+					gp.retry();
+				} else {
+					gp.gameState = gp.title_state;
+					gp.quitGame();
+				}
+
+			}
+		}
 	}
 
 	public void keyReleased(KeyEvent e) {

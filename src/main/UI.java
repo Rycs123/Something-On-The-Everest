@@ -53,6 +53,13 @@ public class UI {
             drawPlayerLife();
             drawDialogue();
         }
+        if (gp.gameState == gp.optionState) {
+            drawOptionsScreen();
+        }
+
+        if (gp.gameState == gp.gameOverState) {
+            drawGameOverScreen();
+        }
         g2_2.setFont(arial_80);
     }
 
@@ -69,7 +76,7 @@ public class UI {
         g2_2.setColor(Color.black);
         g2_2.drawString(text, x, y);
 
-        x = gp.screenWidth - 425;
+        x = gp.screenWidth / 2 - (gp.tileSize * 2) / 2;
         y += gp.tileSize * 1.5;
         g2_2.drawImage(gp.player.down1, x, y, gp.tileSize * 2, gp.tileSize * 2, null);
 
@@ -164,10 +171,55 @@ public class UI {
 
     }
 
+    public void drawOptionsScreen() {
+        // g2_2.setColor(Color.white);
+        // g2_2.setFont(g2_2.getFont().deriveFont(32F));
+        // int frameX, frameY, frameWidth, frameHeight;
+        // frameX = gp.tileSize * 6;
+        // frameY = gp.tileSize;
+        // frameWidth = gp.tileSize * 8;
+    }
+
+    public void drawGameOverScreen() {
+        g2_2.setColor(new Color(0, 0, 0, 150));
+        g2_2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+
+        int x;
+        int y;
+        String text;
+        g2_2.setFont((g2_2.getFont().deriveFont(Font.BOLD, 110F)));
+
+        text = "Game Over";
+        g2_2.setColor(Color.black);
+        x = centeredText(text);
+        y = gp.tileSize * 4;
+        g2_2.drawString(text, x, y);
+
+        g2_2.setColor(Color.white);
+        g2_2.drawString(text, x - 3, y - 3);
+
+        g2_2.setFont(g2_2.getFont().deriveFont(50F));
+        text = "Retry";
+        x = centeredText(text);
+        y += gp.tileSize * 4;
+        g2_2.drawString(text, x, y);
+        if (selectOptionMenu == 0) {
+            g2_2.drawString(">", x - 40, y);
+        }
+        text = "Quit";
+        x = centeredText(text);
+        y += 55;
+        g2_2.drawString(text, x, y);
+        if (selectOptionMenu == 1) {
+            g2_2.drawString(">", x - 40, y);
+        }
+    }
+
     public int centeredText(String text) {
 
         int length = (int) g2_2.getFontMetrics().getStringBounds(text, g2_2).getWidth();
         int x = gp.screenWidth / 2 - length / 2;
         return x;
     }
+
 }

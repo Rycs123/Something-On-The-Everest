@@ -45,7 +45,7 @@ public class Player extends Character {
 		worldY = gp.tileSize * 21;
 		speed = 4;
 		direction = "up";
-		maxLife = 8;
+		maxLife = 6;
 		life = maxLife;
 	}
 
@@ -63,6 +63,11 @@ public class Player extends Character {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void restoreLife() {
+		life = maxLife;
+		invincible = false;
 	}
 
 	public void update() {
@@ -145,6 +150,10 @@ public class Player extends Character {
 				invincibleCounter = 0;
 			}
 
+		}
+		if (life <= 0) {
+			gp.gameState = gp.gameOverState;
+			gp.playSE(5);
 		}
 	}
 
