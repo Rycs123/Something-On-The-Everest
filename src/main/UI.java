@@ -92,18 +92,18 @@ public class UI {
         if (selectOptionMenu == 0) {
             g2_2.drawString(">", x - gp.tileSize, y);
         }
-        text = "Load Game";
-        x = centeredText(text);
-        y += gp.tileSize;
-        g2_2.drawString(text, x, y);
-        if (selectOptionMenu == 1) {
-            g2_2.drawString(">", x - gp.tileSize, y);
-        }
+        // text = "Load Game";
+        // x = centeredText(text);
+        // y += gp.tileSize;
+        // g2_2.drawString(text, x, y);
+        // if (selectOptionMenu == 1) {
+        //     g2_2.drawString(">", x - gp.tileSize, y);
+        // }
         text = "Quit";
         x = centeredText(text);
         y += gp.tileSize;
         g2_2.drawString(text, x, y);
-        if (selectOptionMenu == 2) {
+        if (selectOptionMenu == 1) {
             g2_2.drawString(">", x - gp.tileSize, y);
         }
     }

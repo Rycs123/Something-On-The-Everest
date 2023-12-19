@@ -35,11 +35,11 @@ public class KeyHandler implements KeyListener {
 					gp.playMusic(0);
 				}
 				if (gp.ui.selectOptionMenu == 1) {
-					// add later
-				}
-				if (gp.ui.selectOptionMenu == 2) {
 					System.exit(0);
 				}
+				// if (gp.ui.selectOptionMenu == 2) {
+				// 	System.exit(0);
+				// }
 			}
 		}else if (gp.gameState == gp.play_state) {
 			if (code == KeyEvent.VK_W) {
