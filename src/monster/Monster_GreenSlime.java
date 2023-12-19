@@ -10,12 +10,11 @@ public class Monster_GreenSlime extends Character {
     public Monster_GreenSlime(GamePanel gp) {
         super(gp);
         type = 2;
-        name = "Orc";
+        name = "Green Slime";
         speed = 1;
         maxLife = 4;
         life = maxLife;
         direction = "left";
-        // ukuran monster
         solidArea.x = 3;
         solidArea.y = 18;
         solidArea.width = 42;
