@@ -50,6 +50,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public Character monster[] = new Character[20];
 
 	public int gameState;
+	public final int title_state = 0;
 	public final int play_state = 1;
 	public final int pause_state = 2;
 	public final int dialogue = 3;
@@ -62,15 +63,12 @@ public class GamePanel extends JPanel implements Runnable {
 		this.setFocusable(true);
 	}
 
-	// public void setUpGame() {
-	// }
-
 	public void setupGame() {
 		objSetter.setObject();
 		objSetter.setNpc();
 		objSetter.setMonster();
-		playMusic(0);
-		gameState = play_state;
+		// playMusic(0);
+		gameState = title_state;
 	}
 
 	public void startGameThread() {
@@ -100,8 +98,8 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
 	public void update() {
-		
-		if(gameState == play_state){
+
+		if (gameState == play_state) {
 			player.update();
 
 			for (int i = 0; i < npc.length; i++) {
@@ -118,7 +116,7 @@ public class GamePanel extends JPanel implements Runnable {
 				}
 			}
 		}
-		if(gameState == pause_state){
+		if (gameState == pause_state) {
 			// ui.drawPauseScreen();
 		}
 
@@ -128,30 +126,33 @@ public class GamePanel extends JPanel implements Runnable {
 		super.paintComponent(g);
 
 		Graphics2D g2 = (Graphics2D) g;
+		if (gameState == title_state) {
+			ui.draw(g2);
+		} else {
+			tileM.draw(g2);
 
-		tileM.draw(g2);
-
-		for (int i = 0; i < obj.length; i++) {
-			if (obj[i] != null) {
-				obj[i].draw(g2, this);
+			for (int i = 0; i < obj.length; i++) {
+				if (obj[i] != null) {
+					obj[i].draw(g2, this);
+				}
 			}
-		}
 
-		for (int i = 0; i < npc.length; i++) {
-			if (npc[i] != null) {
-				npc[i].draw(g2);
+			for (int i = 0; i < npc.length; i++) {
+				if (npc[i] != null) {
+					npc[i].draw(g2);
+				}
 			}
-		}
 
-		for (int i = 0; i < monster.length; i++) {
-			if (monster[i] != null) {
-				monster[i].draw(g2);
+			for (int i = 0; i < monster.length; i++) {
+				if (monster[i] != null) {
+					monster[i].draw(g2);
+				}
 			}
+
+			player.draw(g2);
+
+			ui.draw(g2);
 		}
-
-		player.draw(g2);
-
-		ui.draw(g2);
 
 		g2.dispose();
 
