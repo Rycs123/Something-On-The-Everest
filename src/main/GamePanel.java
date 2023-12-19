@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
@@ -50,9 +53,18 @@ public class GamePanel extends JPanel implements Runnable {
 	public Character monster[] = new Character[20];
 
 	public int gameState;
+	public final int title_state = 0;
 	public final int play_state = 1;
 	public final int pause_state = 2;
 	public final int dialogue = 3;
+	public final int optionState = 4;
+	public final int gameOverState = 5;
+	public final int endingState = 6;
+
+	int screenWidth2 = screenWidth;
+	int screenHeight2 = screenHeight;
+	BufferedImage tempScreen;
+	Graphics2D g2;
 
 	public GamePanel() {
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -69,8 +81,17 @@ public class GamePanel extends JPanel implements Runnable {
 		objSetter.setObject();
 		objSetter.setNpc();
 		objSetter.setMonster();
-		playMusic(0);
-		gameState = play_state;
+		// playMusic(0);
+		gameState = title_state;
+	}
+
+	public void setFullScreen() {
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		GraphicsDevice gd = ge.getDefaultScreenDevice();
+		gd.setFullScreenWindow(Main.window);
+
+		screenWidth2 = Main.window.getWidth();
+		screenHeight2 = Main.window.getHeight();
 	}
 
 	public void startGameThread() {
@@ -124,37 +145,76 @@ public class GamePanel extends JPanel implements Runnable {
 
 	}
 
+	public void drawToTempScreen() {
+		if (gameState == title_state) {
+			ui.draw(g2);
+		} else {
+			tileM.draw(g2);
+
+			for (int i = 0; i < obj.length; i++) {
+				if (obj[i] != null) {
+					obj[i].draw(g2, this);
+				}
+			}
+
+			for (int i = 0; i < npc.length; i++) {
+				if (npc[i] != null) {
+					npc[i].draw(g2);
+				}
+			}
+
+			for (int i = 0; i < monster.length; i++) {
+				if (monster[i] != null) {
+					monster[i].draw(g2);
+				}
+			}
+
+			player.draw(g2);
+
+			ui.draw(g2);
+		}
+	}
+
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
 		Graphics2D g2 = (Graphics2D) g;
+		if (gameState == title_state) {
+			ui.draw(g2);
+		} else {
+			tileM.draw(g2);
 
-		tileM.draw(g2);
-
-		for (int i = 0; i < obj.length; i++) {
-			if (obj[i] != null) {
-				obj[i].draw(g2, this);
+			for (int i = 0; i < obj.length; i++) {
+				if (obj[i] != null) {
+					obj[i].draw(g2, this);
+				}
 			}
-		}
 
-		for (int i = 0; i < npc.length; i++) {
-			if (npc[i] != null) {
-				npc[i].draw(g2);
+			for (int i = 0; i < npc.length; i++) {
+				if (npc[i] != null) {
+					npc[i].draw(g2);
+				}
 			}
-		}
 
-		for (int i = 0; i < monster.length; i++) {
-			if (monster[i] != null) {
-				monster[i].draw(g2);
+			for (int i = 0; i < monster.length; i++) {
+				if (monster[i] != null) {
+					monster[i].draw(g2);
+				}
 			}
+
+			player.draw(g2);
+
+			ui.draw(g2);
 		}
-
-		player.draw(g2);
-
-		ui.draw(g2);
 
 		g2.dispose();
 
+	}
+
+	public void drawToFullScreen() {
+		Graphics g = getGraphics();
+		g.drawImage(tempScreen, 0, 0, screenWidth2, screenHeight2, null);
+		g.dispose();
 	}
 
 	public void playMusic(int number) {
@@ -170,5 +230,16 @@ public class GamePanel extends JPanel implements Runnable {
 	public void playSE(int number) {
 		sound.setFile(number);
 		sound.play();
+	}
+
+	public void retry() {
+		player.restoreLife();
+		player.setDefaultValue();
+		objSetter.setNpc();
+		objSetter.setMonster();
+	}
+
+	public void quitGame() {
+		System.exit(0);
 	}
 }

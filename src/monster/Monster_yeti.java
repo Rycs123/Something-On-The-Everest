@@ -1,6 +1,5 @@
 package monster;
 
-import java.util.Random;
 import java.io.IOException;
 import character.Character;
 import main.GamePanel;

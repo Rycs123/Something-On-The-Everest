@@ -27,7 +27,7 @@ public class Npc_purple extends Character {
 	}
 
     public void setDialogue(){
-        dialogues = "Halo Heang, Selamat Datang di Everest.\nKonon katanya ada sebuah harta karun yang tersembunyi \ndi gunung ini.\nKau hebat jika menemukannya";
+        dialogues = "Halo!!, Selamat Datang di Everest.\nKonon katanya ada sebuah harta karun yang tersembunyi \ndi gunung ini.\nKau hebat jika menemukannya";
     }
     public void speak(){
     

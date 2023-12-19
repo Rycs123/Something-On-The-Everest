@@ -28,6 +28,10 @@ public class EventHandler {
         if(hit(31, 14, "any")==true){
             gp.player.life--;
         }
+        if(hit(38, 7, "any")==true){
+            gp.gameState = gp.endingState;
+            gp.playSE(6);
+        }
     }
 
     public boolean hit(int eventCol, int eventRow, String reqDirection){

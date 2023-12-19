@@ -65,6 +65,11 @@ public class Player extends Character {
 		}
 	}
 
+	public void restoreLife() {
+		life = maxLife;
+		invincible = false;
+	}
+
 	public void update() {
 
 		if (moving == false) {
@@ -144,7 +149,10 @@ public class Player extends Character {
 				invincible = false;
 				invincibleCounter = 0;
 			}
-
+		}
+		if (life <= 0) {
+			gp.gameState = gp.gameOverState;
+			gp.playSE(5);
 		}
 	}
 
