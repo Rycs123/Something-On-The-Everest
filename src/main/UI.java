@@ -53,9 +53,7 @@ public class UI {
             drawPlayerLife();
             drawDialogue();
         }
-
         g2_2.setFont(arial_80);
-
     }
 
     public void drawTitleScreen() {
@@ -94,7 +92,7 @@ public class UI {
         x = centeredText(text);
         y += gp.tileSize;
         g2_2.drawString(text, x, y);
-        if (selectOptionMenu == 0) {
+        if (selectOptionMenu == 2) {
             g2_2.drawString(">", x - gp.tileSize, y);
         }
     }
@@ -104,9 +102,7 @@ public class UI {
         String text = "PAUSED";
         int x;
 
-        int length = (int) g2_2.getFontMetrics().getStringBounds(text, g2_2).getWidth();
-        x = gp.screenWidth / 2 - length / 2;
-
+        x = centeredText(text);
         int y = gp.screenHeight / 2;
 
         g2_2.drawString(text, x, y);
